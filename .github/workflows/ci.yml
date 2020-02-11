@@ -20,11 +20,5 @@ jobs:
       - uses: actions/setup-go@v1.1.2
         with:
           go-version: ${{ matrix.go-version }}
-      - uses: actions/cache@v1
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go${{ matrix.go-version }}-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go${{ matrix.go-version }}
       - name: test
         run: go test -v ./...
